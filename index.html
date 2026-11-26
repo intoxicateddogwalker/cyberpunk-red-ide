@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>CYBERPUNK // RED IDE</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div id="scanlines" aria-hidden="true"></div>
+<header id="topbar">
+  <div class="logo">CYBERPUNK<span class="red">//</span>RED&nbsp;IDE</div>
+  <div class="top-actions">
+    <button id="btn-new-file" type="button">+ New file</button>
+    <button id="btn-delete-file" type="button">Delete file</button>
+    <button id="btn-run" type="button">▶ Run (Python note)</button>
+  </div>
+</header>
+<div id="honesty">
+  In-browser terminal = built-in shell emulator (<code>ls</code>, <code>cd</code>, <code>cat</code>, <code>echo</code>…).
+  It is <strong>not</strong> a real Linux system. For a real local shell, run
+  <code>server.py</code> on your own computer (localhost only) and press “Connect real shell”.
+</div>
+<main id="layout">
+  <aside id="sidebar">
+    <div class="pane-title">FILES</div>
+    <div id="file-tree"></div>
+    <div class="pane-title">NETWORK — YOUR CONNECTION ONLY</div>
+    <div id="net-panel">
+      <div class="net-row"><span class="dot" id="net-dot"></span><span id="net-status">Checking…</span></div>
+      <div class="net-row"><span class="net-label">Connection:</span> <span id="net-type">—</span></div>
+      <div class="net-row"><span class="net-label">Public IP:</span> <span id="net-ip">not looked up</span></div>
+      <button id="btn-ip" type="button">Show my public IP</button>
+      <p class="net-note">A web page <strong>cannot</strong> scan Wi-Fi networks or see devices
+      near your phone. Browsers block that. This panel only shows facts about
+      your own connection. To list hosts on your own home network from your own
+      computer, use <code>scan_own_network.py</code> in this repo.</p>
+      <div class="net-row"><span class="net-label">Local server:</span> <span id="net-server">not detected</span></div>
+      <button id="btn-shell" type="button" disabled>Connect real shell</button>
+    </div>
+  </aside>
+  <section id="editor-pane">
+    <div id="tabs"></div>
+    <div id="editor-wrap">
+      <pre id="highlight" aria-hidden="true"><code id="highlight-code"></code></pre>
+      <textarea id="editor" spellcheck="false" autocomplete="off" autocapitalize="off" placeholder="// pick a file on the left, or press + New file"></textarea>
+    </div>
+    <div id="editor-status">No file open.</div>
+  </section>
+  <section id="terminal-pane">
+    <div class="pane-title">TERMINAL <span id="term-mode" class="term-mode">emulator</span></div>
+    <div id="term-output"></div>
+    <div id="term-line">
+      <span id="term-prompt">guest@red-ide:~$</span>
+      <input id="term-input" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Terminal input">
+    </div>
+  </section>
+</main>
+<footer id="statusbar">
+  <span>CYBERPUNK RED IDE</span>
+  <span id="status-files">0 files</span>
+  <span>Files save in this browser only.</span>
+</footer>
+<script src="app.js"></script>
+</body>
+</html>
